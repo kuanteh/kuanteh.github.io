@@ -83,7 +83,6 @@ body {
 .navbar {
     background-color: rgb(0, 0, 0);
     transition: background-color 0.35s ease;
-    /* position: fixed; */
 }
 
 /* 向下滚动时：半透明，可隐约看到下方内容 */
@@ -93,20 +92,38 @@ body {
     -webkit-backdrop-filter: blur(10px);
 }
 
+/* ─── Hero Section ─────────────────────────────────────────
+   [RESPONSIVE FIX]
+   原本 height: 650px 是固定高度，手机上字体 12rem 比容器还高会被裁掉。
+   改成 min-height: 650px → 容器可以随内容撑开，不会裁切文字。
+   加 padding-top: 80px 是因为 navbar fixed-top 高度约 60px，
+   防止内容被 navbar 遮住。
+   加 padding-left/right 防止文字贴到手机屏幕边缘。
+   ─────────────────────────────────────────────────────── */
 .hero-content {
     background-image: url(../images/blackc.png);
-    /* background-size: cover; */
-    /* background-position: center; */
-    height: 650px;
+    background-size: cover;          
+    background-position: center;     
+    min-height: 650px;               /* 让container以撑开 */
     display: flex;
     flex-direction: column;
     justify-content: center;
     color: white;
+    padding: 80px 1.5rem 40px;      /* 上留空给 navbar，左右防贴边 */
 }
 
 .hero-content h1 {
-    font-size: 12rem;
+    font-size: clamp(3.5rem, 13vw, 11rem); /*clamp 属性可以自动调整字体大小 ，*/
+    line-height: 1;                         
+    word-break: break-word;                 /* 可以切断文字因为Portfolio 很长 */
 }
+
+/* linear - the animation has the same speed from start to finish
+                ease - default value, start slow, then fast, end slow
+                ease-in - animation has slow start
+                ease-out - animation has slow end
+                ease-in-out - animation has both slow start and slow end
+            */
 
 .marquee-section {
     background-image: url(../images/blackd.png);
@@ -117,31 +134,32 @@ body {
     /*positionning the image ，给背景图片去中间*/
 }
 
-/* animation slider marquee*/
+/* animation slider marquee */
 .marquee-container {
     overflow: hidden;
     width: 100%;
 }
 
+
 .marquee-content-1 {
     display: flex;
+    /* 不要wrap ，不会换行 */
     white-space: nowrap;
-    /* 这里的 20s 是滚动速度，可以根据需要调整 */
+    /* 这里的 20s 是滚动速度（完成一次动画循环要20秒） */
     animation: scroll-left 20s linear infinite;
 }
 
 .marquee-content-2 {
     display: flex;
     white-space: nowrap;
-    /* animation-direction: normal; */
-    /* 这里的 20s 是滚动速度，可以根据需要调整 */
+    /* 这里的 20s 是滚动速度（完成一次动画循环要20秒） */
     animation: scroll-left 20s linear infinite;
 }
 
 .marquee-content-3 {
     display: flex;
     white-space: nowrap;
-    /* 这里的 20s 是滚动速度，可以根据需要调整 */
+    /* 这里的 20s 是滚动速度（完成一次动画循环要20秒） */
     animation: scroll-left 20s linear infinite;
 }
 
@@ -178,6 +196,26 @@ body {
     /* 间距 */
 }
 
+/* Scroll Left Animation */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* 移动到自身内容的一半（因为我们放了两份内容） */
+        transform: translateX(-50%);
+    }
+}
+
+ /* @keyframes scroll-right {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(50%);
+    }
+} */
+
 /* Introduce Section */
 .Introduce-Section {
     position: relative;
@@ -202,13 +240,14 @@ body {
 .Introduce-Section .about-link {
     color: rgba(255, 255, 255, 0.86);
     text-decoration: none;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 3px;
+    /* 粗细 */
+    /* text-decoration-thickness: 1px; */
+    /* 偏移多少 */
+    /* text-underline-offset: 3px; */
     text-shadow:
         0 0 5px #fff,
         /* 1. 最核心的白色模糊 (内焰) */ 0 0 5px #fff,
         /* 2. 稍微扩散的白色 */ 0 0 15px rgb(255, 255, 255); /* 3. 第一层彩色模糊 (霓虹灯色) */
-    /* 0 0 20px rgb(255, 255, 255);   4. 第二层彩色模糊 */
 }
 
 .Introduce-Section .about-linked a {
@@ -216,8 +255,8 @@ body {
 }
 
 .Introduce-Section .about-actions .btn {
-    border-radius: 999px;
-    padding: 0.6rem 1.05rem;
+    border-radius: 100px;
+    padding: 0.6rem 1.05rem; /* 上下，左右*/
     font-weight: 600;
 }
 
@@ -227,15 +266,12 @@ body {
 }
 
 .Introduce-Section .about-actions .btn-outline-light:hover {
-    /* border-color: rgba(255, 255, 255, 0.35); */
-    /* background: rgba(255, 255, 255, 0.06); */
     background-image: url(../images/TNG.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     border-color: rgba(255, 255, 255, 0.35);
     color: rgba(255, 255, 255, 0);
-    /* text-shadow: 0 1px 8px rgba(0, 0, 0, 0.75); */
     height: 150px;
     width: 150px;
 }
@@ -252,9 +288,6 @@ body {
     border-radius: 18px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(255, 255, 255, 0.03);
-}
-
-.Introduce-Section .about-photo {
     transition:
         box-shadow 0.35s ease,
         transform 0.35s ease;
@@ -268,7 +301,7 @@ body {
     transform: translateY(-6px);
 }
 
-/* My Favourite Things section*/
+/* My Favourite Things section */
 .favourite-things-content {
     background: radial-gradient(900px 500px at 15% 9%, rgba(40, 70, 255, 0.14), transparent 60%), radial-gradient(700px 450px at 70% 1%, rgba(0, 180, 255, 0.12), transparent 55%), #050507;
     padding: 96px 0 90px;
@@ -280,6 +313,7 @@ body {
 
 .fav-grid {
     display: grid;
+    /* 定两个column，每列最小宽度为0，1fr占全部空间 */
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
 }
@@ -294,6 +328,7 @@ body {
     background: rgba(0, 0, 0, 0.35);
     text-decoration: none;
     color: white;
+    /* Hover 的时候就会有这个transition */
     transition:
         transform 0.25s ease,
         border-color 0.25s ease,
@@ -310,28 +345,24 @@ body {
         0 18px 55px rgba(0, 0, 0, 0.55);
 }
 
-/* Ikea Shark 的card */
+/* Ikea Shark 的 card */
 .fav-card.wide {
     /* grid-column : 最左边 到最右边 */
     grid-column: 1 / -1;
     height: 205px;
 }
 
-/* 设置thumnail（image） */
+/* 设置 thumbnail（image） */
 .fav-thumb {
     width: 170px;
     /* 给图片设置成 1比1 高宽 */
     aspect-ratio: 1 / 1;
     border-radius: 14px;
-    /* 让图片cover 不会变形，如果没有放这个，图片就会被压扁扁 */
+    /* 让图片cover 不会变形 */
     object-fit: cover;
     border: 1px solid rgba(255, 255, 255, 0.12);
     background: rgba(255, 255, 255, 0.04);
-    /* flex-grow: 0, flex-shrink: 0, flex-basis: auto
-                    锁定尺寸：不放大(0)、不缩小(0)、保持原始大小(auto)
-                    flex-grow	有多余空间时	0	“我要不要变胖？”
-                    flex-shrink	空间不够时	    1	“我要不要变瘦？”
-                    flex-basis	初始状态	  auto	“我原本有多重？”*/
+    /* flex-grow: 0 （不伸展），flex-shrink: 0（不收缩），flex-basis: auto */
     flex: 0 0 auto;
 }
 
@@ -344,27 +375,22 @@ body {
 
 .fav-title {
     font-size: 1.15rem;
-    /* 字体粗细 （bold） */
     font-weight: 700;
-    /* 水平字间距 */
     letter-spacing: 0.2px;
-    /* 上 右 下 左 */
     margin: 0 44px 6px 0;
 }
 
 .fav-desc {
     margin: 0;
     color: rgba(255, 255, 255, 0.72);
-    /* 文字的垂直距离，1.35 是问题的大小 乘 1.35 */
     line-height: 1.35;
-    /* 一行文字最多只占用大约 48个字符 的宽度，不要太长 */
     max-width: 48ch;
 }
 
 /* Education Section */
 .education-section {
     background: radial-gradient(900px 500px at 8% 57%, rgba(49, 241, 46, 0.142), transparent 60%), radial-gradient(700px 450px at 70% 97%, rgba(231, 85, 253, 0.088), transparent 55%), #050507;
-    height: 1450px;
+    padding: 80px 0 100px;
 }
 
 .education-wrap {
@@ -393,7 +419,7 @@ body {
 .edu-photo {
     width: 100%;
     height: 100%;
-    aspect-ratio: 3/ 2;
+    aspect-ratio: 3 / 2;
     min-height: 220px;
     object-fit: cover;
     display: block;
@@ -426,12 +452,6 @@ body {
     margin: 0;
     line-height: 1.5;
 }
-/* .edu-inbtn:hover{
-                background-color:rgb(104, 246, 104);
-                color: white;
-                border-radius: 999px; 
-                padding: 10px 10px;
-            } */
 
 /* My Skill */
 .myskill-section {
@@ -443,18 +463,6 @@ body {
 .myskill-wrap {
     max-width: 1120px;
 }
-/*  delete*/
-/* .myskill-kicker {
-    color: rgba(255, 255, 255, 0.55);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    margin-bottom: 16px;
-} */
-
-/* .myskill-left {
-    padding-right: 18px;
-} */
 
 .myskill-list {
     list-style: none;
@@ -468,31 +476,28 @@ body {
     opacity: 0;
     pointer-events: none;
 }
+
 /* linear    - the animation has the same speed from start to finish
-    ease     - default value, start slow, then fast, end slow
-    ease-in  - animation has slow start
-    ease-out - animation has slow end
-    ease-in-out - animation has both slow start and slow end
- */
+   ease      - default value, start slow, then fast, end slow
+   ease-in   - animation has slow start
+   ease-out  - animation has slow end
+   ease-in-out - animation has both slow start and slow end */
 .myskill-item {
-    /* appearance: none;
-    -webkit-appearance: none; */
-    /* border: none; */
-    /* background: transparent; */
-    /* width: 100%; */
     text-align: left;
     padding: 0;
     margin: 6px 0;
     font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
-    /* clamp 是control 大小的限制, font-size :clamp(min val max);  这个意思就是set 最低只可以到2.3rem 最大可以到3.3rem ,如果screen 再大or 再小只会保留再max or min */
-    /* vw = viewwidth ,打开这个网站的时候,会根据浏览器大小决定大小 ,现在是4.2vw 意思就是 4.2%的字大小 */
+    /* clamp 是 control 大小的限制，font-size: clamp(min val max)
+       这个意思就是 set 最低只可以到 2.3rem 最大可以到 3.3rem */
+    /* vw = viewwidth，打开这个网站的时候会根据浏览器大小决定大小
+       现在是 4.2vw 意思就是 4.2% 的字大小 */
     font-size: clamp(2.3rem, 4.2vw, 3.3rem);
     /* 垂直 */
     line-height: 1.05;
     /* 水平间距 */
     letter-spacing: 0.02em;
     color: rgba(255, 255, 255, 0.18);
-    /* tranform配hover */
+    /* transform 配 hover */
     transition:
         color 0.2s ease,
         /* 透明度 */ opacity 0.2s ease,
@@ -502,12 +507,14 @@ body {
 }
 
 /* mouse 放上去 */
-/* hover跟.is.active 放一起因为hover 是让鼠标经过有 hover effect , .is.active 是click 了过后还保留那个effect */
+/* hover 跟 .is-active 放一起因为 hover 是让鼠标经过有 hover effect，
+   .is-active 是 click 了过后还保留那个 effect */
 .myskill-item:hover,
 .myskill-item.is-active {
     color: rgba(255, 255, 255, 0.96);
     transform: translateX(2px);
 }
+
 
 .myskill-preview {
     position: relative;
@@ -516,7 +523,8 @@ body {
     background: rgba(0, 0, 0, 0.35);
     overflow: hidden;
     min-height: 400px;
-    width: 600px;
+    width: 100%;        
+    max-width: 600px;   
 }
 
 .myskill-panel {
@@ -525,22 +533,20 @@ body {
     inset: 0;
     padding: 18px;
     opacity: 0;
-    /* pointer-events: none; */
     transition: opacity 0.18s ease;
     display: grid;
-    /* set title 和 text 放哪里, 第一行 auto 第二行 放剩余空间 */
+    /* set title 和 text 放哪里，第一行 auto 第二行放剩余空间 */
     grid-template-rows: auto 1fr;
     gap: 14px;
     overflow: hidden;
 }
 
-/* penal 换的时候 */
+/* panel 换的时候 */
 .myskill-panel.is-active {
     opacity: 1;
-    /* pointer-events: auto; */
 }
 
-/* "~"当 ID 为 input 的按钮被选中时，去找它后面的 .myskill */
+/* "~" 当 ID 为 input 的按钮被选中时，去找它后面的 .myskill */
 #skill-taekwondo:checked ~ .myskill-layout .myskill-preview [data-skill-panel="taekwondo"],
 #skill-wushu:checked ~ .myskill-layout .myskill-preview [data-skill-panel="wushu"],
 #skill-css:checked ~ .myskill-layout .myskill-preview [data-skill-panel="css"],
@@ -581,51 +587,11 @@ body {
     font-weight: 700;
     color: rgba(255, 255, 255, 0.95);
 }
-@keyframes slider {
-    0% {
-        transform: translateY(100%); /*translateX 是平行线（X），translateY 是垂直线（Y）*/
-        opacity: 1;
-    }
-    25% {
-        transform: translateY(0px);
-        opacity: 1;
-    }
-    50% {
-        transform: translateY(-100%);
-        opacity: 1;
-    }
-    /* 75.1%,75% {
-                    transform: translate(100%);
-                    opacity: 0;
-                } */
-    50.1%,
-    100% {
-        transform: translateY(100%);
-        opacity: 1;
-    }
-}
-.slider img {
-    animation-name: slider;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-}
-.slider img:nth-child(2) {
-    animation-delay: 1.25s; /* based on animation-duration 有几秒，然后才除有how many images，比如duration 有 5s,so have 4 child ,so 5/4=1.25 */
-    opacity: 0;
-}
-.slider img:nth-child(3) {
-    animation-delay: 2.5s;
-    opacity: 0;
-}
-.slider img:nth-child(4) {
-    animation-delay: 3.75s;
-    opacity: 0;
-}
 
+
+/* Tablet (≤991px) */
 @media (max-width: 991.98px) {
+
     .myskill-left {
         padding-right: 0;
         margin-bottom: 18px;
@@ -634,27 +600,65 @@ body {
     .myskill-preview {
         min-height: 320px;
     }
-}
 
-@media (max-width: 991.98px) {
+    /* myskill 列表顶部不需要那么大的空间 */
+    .myskill-list {
+        margin-top: 20px;
+    }
+
+    /* favourite cards 改成一排 */
     .fav-grid {
         grid-template-columns: 1fr;
     }
 
+    /* thumbnail 缩小适应单列布局 */
     .fav-thumb {
         width: 130px;
     }
 }
 
-/* 定义滚动动画 */
-@keyframes scroll-left {
-    0% {
-        transform: translateX(0);
+/* phone size (≤576px) */
+@media (max-width: 576px) {
+
+    /* hero 区域顶部留更多空间给 navbar */
+    .hero-content {
+        padding-top: 100px;
+        padding-bottom: 60px;
     }
 
-    100% {
-        /* 移动到自身内容的一半（因为我们放了两份内容） */
-        transform: translateX(-50%);
+    .myskill-preview {
+        min-height: 260px;
+    }
+
+    /* 图片高度缩小 */
+    .myskill-img {
+        height: 150px;
+    }
+
+    .myskill-item {
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+    }
+
+    .myskill-list {
+        margin-top: 10px;
+    }
+
+    /* marquee 文字在手机上缩小 */
+    .marquee-content-1 span,
+    .marquee-content-2 span,
+    .marquee-content-3 span {
+        font-size: 36px;
+    }
+
+    /*  marquee 高度跟随文字缩小 */
+    .marquee-section {
+        height: 180px;
+    }
+
+    /* Ikea Shark wide card 高度自动撑开，不固定 */
+    .fav-card.wide {
+        height: auto;
+        min-height: 150px;
     }
 }
 
@@ -682,17 +686,17 @@ body {
     /* max-height: 400px; */
 }
 
-.study-together-content{
+.study-together-content {
     position: relative;
     z-index: 1;
     max-width: 800px;
     margin: auto;
     color: white;
-    text-shadow: 0 3px 20px rgba(0,0,0,0.6);
+    text-shadow: 0 3px 20px rgba(0, 0, 0, 0.6);
 }
 
 /* Contact section */
-.contact-section{
+.contact-section {
     position: relative;
     padding: 90px 0 110px;
     background: radial-gradient(900px 500px at 8% 57%, rgba(46, 163, 241, 0.142), transparent 60%), radial-gradient(700px 450px at 70% 90%, rgba(226, 35, 255, 0.088), transparent 55%), #050507;
@@ -717,16 +721,6 @@ body {
     gap: 1rem;
 }
 
-@media (min-width: 768px) {
-    .footer-inner {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        text-align: left;
-        align-items: center;
-    }
-}
-
 .footer-brand {
     color: rgba(255, 255, 255, 0.95);
     font-size: 1.15rem;
@@ -739,11 +733,6 @@ body {
     justify-content: center;
 }
 
-@media (min-width: 768px) {
-    .footer-links {
-        justify-content: flex-end;
-    }
-}
 
 .footer-links a {
     color: rgba(255, 255, 255, 0.55);
@@ -754,11 +743,10 @@ body {
 
 .footer-links a:hover {
     /* color: #2583fd; */
-     text-shadow:
+    text-shadow:
         0 0 2px #fff,
         /* 1. 最核心的白色模糊 (内焰) */ 0 0 5px #fff,
         /* 2. 稍微扩散的白色 */ 0 0 1px rgb(255, 255, 255);
-
 }
 
 .footer-copy {
@@ -774,7 +762,15 @@ body {
         margin-top: 0.5rem;
     }
 
+    .footer-links {
+        justify-content: flex-end;
+    }
     .footer-inner {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        text-align: left;
+        align-items: center;
         row-gap: 0.35rem;
     }
 }
