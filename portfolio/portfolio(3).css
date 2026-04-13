@@ -753,12 +753,16 @@ body {
 }
 
 .footer-links a:hover {
-    color: #c3f12e;
+    /* color: #2583fd; */
+     text-shadow:
+        0 0 2px #fff,
+        /* 1. 最核心的白色模糊 (内焰) */ 0 0 5px #fff,
+        /* 2. 稍微扩散的白色 */ 0 0 1px rgb(255, 255, 255);
+
 }
 
 .footer-copy {
     width: 100%;
-    order: 3;
 }
 
 @media (min-width: 768px) {
