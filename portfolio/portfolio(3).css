@@ -86,6 +86,7 @@ body {
 }
 
 /* 向下滚动时：半透明，可隐约看到下方内容 */
+/* 配合JavaScript */
 .navbar.navbar-scrolled {
     background-color: rgba(0, 0, 0, 0.55);
     backdrop-filter: blur(10px);
