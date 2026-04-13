@@ -1,0 +1,776 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+html,
+body {
+    height: 100%;
+    background: #050507;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* import Google Fonts */
+.bitcount-grid-double-ink {
+    font-family: "Bitcount Grid Double Ink", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 400px;
+    font-style: normal;
+    font-variation-settings:
+        "slnt" 0,
+        "CRSV" 0.5,
+        "ELSH" 0,
+        "ELXP" 0,
+        "SZP1" 0,
+        "SZP2" 0,
+        "XPN1" 0,
+        "XPN2" 0,
+        "YPN1" 0,
+        "YPN2" 0;
+}
+
+/* Font "Portfolio" */
+.bungee-regular {
+    font-family: "Bungee", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/*Name Chan Ze Yu on NavBar*/
+.permanent-marker-regular {
+    font-family: "Permanent Marker", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.oranienbaum-regular {
+    font-family: "Oranienbaum", serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.racing-sans-one-regular {
+    font-family: "Racing Sans One", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.emblema-one-regular {
+    font-family: "Emblema One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.knewave-regular {
+    font-family: "Knewave", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.luckiest-guy-regular {
+    font-family: "Luckiest Guy", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* CSS */
+.navbar {
+    background-color: rgb(0, 0, 0);
+    transition: background-color 0.35s ease;
+    /* position: fixed; */
+}
+
+/* 向下滚动时：半透明，可隐约看到下方内容 */
+.navbar.navbar-scrolled {
+    background-color: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.hero-content {
+    background-image: url(../images/blackc.png);
+    /* background-size: cover; */
+    /* background-position: center; */
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 12rem;
+}
+
+.marquee-section {
+    background-image: url(../images/blackd.png);
+    background-size: cover;
+    /*control size the image，不要给背景图片一直repeat*/
+    height: 270px;
+    background-position: center;
+    /*positionning the image ，给背景图片去中间*/
+}
+
+/* animation slider marquee*/
+.marquee-container {
+    overflow: hidden;
+    width: 100%;
+}
+
+.marquee-content-1 {
+    display: flex;
+    white-space: nowrap;
+    /* 这里的 20s 是滚动速度，可以根据需要调整 */
+    animation: scroll-left 20s linear infinite;
+}
+
+.marquee-content-2 {
+    display: flex;
+    white-space: nowrap;
+    /* animation-direction: normal; */
+    /* 这里的 20s 是滚动速度，可以根据需要调整 */
+    animation: scroll-left 20s linear infinite;
+}
+
+.marquee-content-3 {
+    display: flex;
+    white-space: nowrap;
+    /* 这里的 20s 是滚动速度，可以根据需要调整 */
+    animation: scroll-left 20s linear infinite;
+}
+
+.marquee-content-1 span {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 60px;
+    color: #333;
+    /* 暗灰色文字 */
+    padding-right: 50px;
+    /* 间距 */
+}
+
+.marquee-content-2 span {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 60px;
+    color: #333;
+    /* 暗灰色文字 */
+    padding-right: 50px;
+    /* 间距 */
+}
+
+.marquee-content-3 span {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 60px;
+    color: #333;
+    /* 暗灰色文字 */
+    padding-right: 50px;
+    /* 间距 */
+}
+
+/* Introduce Section */
+.Introduce-Section {
+    position: relative;
+    /* background:radial-gradient(width height at leftright updown rgba transparent , ... , background color (#050507)) */
+    background: radial-gradient(900px 500px at 15% 85%, rgba(40, 70, 255, 0.14), transparent 60%), radial-gradient(700px 450px at 70% 97%, rgba(0, 180, 255, 0.12), transparent 55%), #050507;
+    /* padding : top leftright bottom */
+    padding: 110px 0 90px;
+    overflow: hidden;
+}
+
+.Introduce-Section .about-title {
+    font-size: clamp(2.2rem, 3.5vw, 3.25rem);
+    line-height: 1.05;
+    letter-spacing: 0.3px;
+}
+
+.Introduce-Section .about-lead {
+    max-width: 448px;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.Introduce-Section .about-link {
+    color: rgba(255, 255, 255, 0.86);
+    text-decoration: none;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-shadow:
+        0 0 5px #fff,
+        /* 1. 最核心的白色模糊 (内焰) */ 0 0 5px #fff,
+        /* 2. 稍微扩散的白色 */ 0 0 15px rgb(255, 255, 255); /* 3. 第一层彩色模糊 (霓虹灯色) */
+    /* 0 0 20px rgb(255, 255, 255);   4. 第二层彩色模糊 */
+}
+
+.Introduce-Section .about-linked a {
+    text-decoration: none;
+}
+
+.Introduce-Section .about-actions .btn {
+    border-radius: 999px;
+    padding: 0.6rem 1.05rem;
+    font-weight: 600;
+}
+
+.Introduce-Section .about-actions .btn-outline-light {
+    border-color: rgba(255, 255, 255, 0.22);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.Introduce-Section .about-actions .btn-outline-light:hover {
+    /* border-color: rgba(255, 255, 255, 0.35); */
+    /* background: rgba(255, 255, 255, 0.06); */
+    background-image: url(../images/TNG.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-color: rgba(255, 255, 255, 0.35);
+    color: rgba(255, 255, 255, 0);
+    /* text-shadow: 0 1px 8px rgba(0, 0, 0, 0.75); */
+    height: 150px;
+    width: 150px;
+}
+
+.Introduce-Section .about-photo-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.Introduce-Section .about-photo {
+    width: min(420px, 100%);
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.Introduce-Section .about-photo {
+    transition:
+        box-shadow 0.35s ease,
+        transform 0.35s ease;
+}
+
+.Introduce-Section .about-photo:hover {
+    box-shadow:
+        0 0 16px rgba(255, 255, 255, 0.22),
+        0 0 34px rgba(0, 173, 255, 0.42),
+        0 0 64px rgba(0, 173, 255, 0.28);
+    transform: translateY(-6px);
+}
+
+/* My Favourite Things section*/
+.favourite-things-content {
+    background: radial-gradient(900px 500px at 15% 9%, rgba(40, 70, 255, 0.14), transparent 60%), radial-gradient(700px 450px at 70% 1%, rgba(0, 180, 255, 0.12), transparent 55%), #050507;
+    padding: 96px 0 90px;
+}
+
+.favourite-wrap {
+    max-width: 1120px;
+}
+
+.fav-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.fav-card {
+    position: relative;
+    display: flex;
+    gap: 18px;
+    padding: 18px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.35);
+    text-decoration: none;
+    color: white;
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    overflow: hidden;
+    min-height: 150px;
+}
+
+.fav-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.22);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+        0 18px 55px rgba(0, 0, 0, 0.55);
+}
+
+/* Ikea Shark 的card */
+.fav-card.wide {
+    /* grid-column : 最左边 到最右边 */
+    grid-column: 1 / -1;
+    height: 205px;
+}
+
+/* 设置thumnail（image） */
+.fav-thumb {
+    width: 170px;
+    /* 给图片设置成 1比1 高宽 */
+    aspect-ratio: 1 / 1;
+    border-radius: 14px;
+    /* 让图片cover 不会变形，如果没有放这个，图片就会被压扁扁 */
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    /* flex-grow: 0, flex-shrink: 0, flex-basis: auto
+                    锁定尺寸：不放大(0)、不缩小(0)、保持原始大小(auto)
+                    flex-grow	有多余空间时	0	“我要不要变胖？”
+                    flex-shrink	空间不够时	    1	“我要不要变瘦？”
+                    flex-basis	初始状态	  auto	“我原本有多重？”*/
+    flex: 0 0 auto;
+}
+
+.fav-body {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.fav-title {
+    font-size: 1.15rem;
+    /* 字体粗细 （bold） */
+    font-weight: 700;
+    /* 水平字间距 */
+    letter-spacing: 0.2px;
+    /* 上 右 下 左 */
+    margin: 0 44px 6px 0;
+}
+
+.fav-desc {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
+    /* 文字的垂直距离，1.35 是问题的大小 乘 1.35 */
+    line-height: 1.35;
+    /* 一行文字最多只占用大约 48个字符 的宽度，不要太长 */
+    max-width: 48ch;
+}
+
+/* Education Section */
+.education-section {
+    background: radial-gradient(900px 500px at 8% 57%, rgba(49, 241, 46, 0.142), transparent 60%), radial-gradient(700px 450px at 70% 97%, rgba(231, 85, 253, 0.088), transparent 55%), #050507;
+    height: 1450px;
+}
+
+.education-wrap {
+    max-width: 1120px;
+}
+
+.edu-item {
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.edu-item:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+        0 18px 55px rgba(0, 0, 0, 0.55);
+}
+
+.edu-photo {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3/ 2;
+    min-height: 220px;
+    object-fit: cover;
+    display: block;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+}
+
+.edu-body {
+    padding: 22px 22px;
+}
+
+.edu-label {
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.12em;
+    /* 给字体全部大写 */
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}
+
+.edu-title {
+    margin: 0 0 10px;
+    font-size: 1.35rem;
+    font-weight: bold;
+    color: white;
+}
+
+.edu-time {
+    color: rgb(177, 177, 177);
+    margin: 0;
+    line-height: 1.5;
+}
+/* .edu-inbtn:hover{
+                background-color:rgb(104, 246, 104);
+                color: white;
+                border-radius: 999px; 
+                padding: 10px 10px;
+            } */
+
+/* My Skill */
+.myskill-section {
+    position: relative;
+    padding: 90px 0 110px;
+    background: radial-gradient(900px 500px at 8% 57%, rgba(195, 241, 46, 0.142), transparent 60%), radial-gradient(700px 450px at 70% 1%, rgba(231, 85, 253, 0.088), transparent 55%), #050507;
+}
+
+.myskill-wrap {
+    max-width: 1120px;
+}
+/*  delete*/
+/* .myskill-kicker {
+    color: rgba(255, 255, 255, 0.55);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+} */
+
+/* .myskill-left {
+    padding-right: 18px;
+} */
+
+.myskill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 70px;
+}
+
+.myskill-radio {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+/* linear    - the animation has the same speed from start to finish
+    ease     - default value, start slow, then fast, end slow
+    ease-in  - animation has slow start
+    ease-out - animation has slow end
+    ease-in-out - animation has both slow start and slow end
+ */
+.myskill-item {
+    /* appearance: none;
+    -webkit-appearance: none; */
+    /* border: none; */
+    /* background: transparent; */
+    /* width: 100%; */
+    text-align: left;
+    padding: 0;
+    margin: 6px 0;
+    font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+    /* clamp 是control 大小的限制, font-size :clamp(min val max);  这个意思就是set 最低只可以到2.3rem 最大可以到3.3rem ,如果screen 再大or 再小只会保留再max or min */
+    /* vw = viewwidth ,打开这个网站的时候,会根据浏览器大小决定大小 ,现在是4.2vw 意思就是 4.2%的字大小 */
+    font-size: clamp(2.3rem, 4.2vw, 3.3rem);
+    /* 垂直 */
+    line-height: 1.05;
+    /* 水平间距 */
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.18);
+    /* tranform配hover */
+    transition:
+        color 0.2s ease,
+        /* 透明度 */ opacity 0.2s ease,
+        transform 0.2s ease;
+    /* 给你知道这个是可以按的 */
+    cursor: pointer;
+}
+
+/* mouse 放上去 */
+/* hover跟.is.active 放一起因为hover 是让鼠标经过有 hover effect , .is.active 是click 了过后还保留那个effect */
+.myskill-item:hover,
+.myskill-item.is-active {
+    color: rgba(255, 255, 255, 0.96);
+    transform: translateX(2px);
+}
+
+.myskill-preview {
+    position: relative;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+    min-height: 400px;
+    width: 600px;
+}
+
+.myskill-panel {
+    position: absolute;
+    /* set position top/bottom/left/right 是 0 */
+    inset: 0;
+    padding: 18px;
+    opacity: 0;
+    /* pointer-events: none; */
+    transition: opacity 0.18s ease;
+    display: grid;
+    /* set title 和 text 放哪里, 第一行 auto 第二行 放剩余空间 */
+    grid-template-rows: auto 1fr;
+    gap: 14px;
+    overflow: hidden;
+}
+
+/* penal 换的时候 */
+.myskill-panel.is-active {
+    opacity: 1;
+    /* pointer-events: auto; */
+}
+
+/* "~"当 ID 为 input 的按钮被选中时，去找它后面的 .myskill */
+#skill-taekwondo:checked ~ .myskill-layout .myskill-preview [data-skill-panel="taekwondo"],
+#skill-wushu:checked ~ .myskill-layout .myskill-preview [data-skill-panel="wushu"],
+#skill-css:checked ~ .myskill-layout .myskill-preview [data-skill-panel="css"],
+#skill-html:checked ~ .myskill-layout .myskill-preview [data-skill-panel="html"],
+#skill-bootstrap:checked ~ .myskill-layout .myskill-preview [data-skill-panel="bootstrap"] {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#skill-taekwondo:checked ~ .myskill-layout label[for="skill-taekwondo"],
+#skill-wushu:checked ~ .myskill-layout label[for="skill-wushu"],
+#skill-css:checked ~ .myskill-layout label[for="skill-css"],
+#skill-html:checked ~ .myskill-layout label[for="skill-html"],
+#skill-bootstrap:checked ~ .myskill-layout label[for="skill-bootstrap"] {
+    color: rgba(255, 255, 255, 0.96);
+    transform: translateX(2px);
+}
+
+.myskill-img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    position: relative;
+}
+
+.myskill-text {
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.55;
+    margin: 0;
+}
+
+.myskill-title {
+    margin: 8px 0 10px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.95);
+}
+@keyframes slider {
+    0% {
+        transform: translateY(100%); /*translateX 是平行线（X），translateY 是垂直线（Y）*/
+        opacity: 1;
+    }
+    25% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-100%);
+        opacity: 1;
+    }
+    /* 75.1%,75% {
+                    transform: translate(100%);
+                    opacity: 0;
+                } */
+    50.1%,
+    100% {
+        transform: translateY(100%);
+        opacity: 1;
+    }
+}
+.slider img {
+    animation-name: slider;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.slider img:nth-child(2) {
+    animation-delay: 1.25s; /* based on animation-duration 有几秒，然后才除有how many images，比如duration 有 5s,so have 4 child ,so 5/4=1.25 */
+    opacity: 0;
+}
+.slider img:nth-child(3) {
+    animation-delay: 2.5s;
+    opacity: 0;
+}
+.slider img:nth-child(4) {
+    animation-delay: 3.75s;
+    opacity: 0;
+}
+
+@media (max-width: 991.98px) {
+    .myskill-left {
+        padding-right: 0;
+        margin-bottom: 18px;
+    }
+
+    .myskill-preview {
+        min-height: 320px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .fav-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .fav-thumb {
+        width: 130px;
+    }
+}
+
+/* 定义滚动动画 */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        /* 移动到自身内容的一半（因为我们放了两份内容） */
+        transform: translateX(-50%);
+    }
+}
+
+.study-together-section {
+    position: relative;
+    min-height: 15vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 70px 0 70px;
+}
+
+.study-together-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* aspect-ratio: 3/2 ; */
+    width: 100%;
+    /* height: 100%; */
+    object-fit: cover;
+    z-index: 1;
+    /* max-height: 400px; */
+}
+
+.study-together-content{
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: auto;
+    color: white;
+    text-shadow: 0 3px 20px rgba(0,0,0,0.6);
+}
+
+/* Contact section */
+.contact-section{
+    position: relative;
+    padding: 90px 0 110px;
+    background: radial-gradient(900px 500px at 8% 57%, rgba(46, 163, 241, 0.142), transparent 60%), radial-gradient(700px 450px at 70% 90%, rgba(226, 35, 255, 0.088), transparent 55%), #050507;
+}
+
+.contact-wrap {
+    max-width: 1120px;
+}
+
+/* Footer */
+.site-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: #020203;
+    padding: 2rem 0 2.25rem;
+}
+
+.footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .footer-inner {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        text-align: left;
+        align-items: center;
+    }
+}
+
+.footer-brand {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.15rem;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.25rem;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .footer-links {
+        justify-content: flex-end;
+    }
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: #c3f12e;
+}
+
+.footer-copy {
+    width: 100%;
+    order: 3;
+}
+
+@media (min-width: 768px) {
+    .footer-copy {
+        width: auto;
+        order: 0;
+        flex: 1 1 100%;
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+
+    .footer-inner {
+        row-gap: 0.35rem;
+    }
+}
